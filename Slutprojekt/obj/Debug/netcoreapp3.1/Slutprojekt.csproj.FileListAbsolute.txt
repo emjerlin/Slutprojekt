@@ -1,0 +1,13 @@
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\obj\Debug\netcoreapp3.1\Slutprojekt.csprojAssemblyReference.cache
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\obj\Debug\netcoreapp3.1\Slutprojekt.AssemblyInfoInputs.cache
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\obj\Debug\netcoreapp3.1\Slutprojekt.AssemblyInfo.cs
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\obj\Debug\netcoreapp3.1\Slutprojekt.csproj.CoreCompileInputs.cache
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\bin\Debug\netcoreapp3.1\Slutprojekt.exe
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\bin\Debug\netcoreapp3.1\Slutprojekt.deps.json
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\bin\Debug\netcoreapp3.1\Slutprojekt.runtimeconfig.json
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\bin\Debug\netcoreapp3.1\Slutprojekt.runtimeconfig.dev.json
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\bin\Debug\netcoreapp3.1\Slutprojekt.dll
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\bin\Debug\netcoreapp3.1\Slutprojekt.pdb
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\obj\Debug\netcoreapp3.1\Slutprojekt.dll
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\obj\Debug\netcoreapp3.1\Slutprojekt.pdb
+C:\Users\emma.jerlin\Documents\Skolarbete\Programmering\Slutprojekt\Slutprojekt\obj\Debug\netcoreapp3.1\Slutprojekt.genruntimeconfig.cache
