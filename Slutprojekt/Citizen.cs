@@ -2,7 +2,7 @@ using System;
 
 namespace Slutprojekt
 {
-    public class Citizens
+    public class Citizen
     {
         private string ageGroup;
         private string[] ageGroups ={"Young","MiddleAge","Old"};
@@ -14,7 +14,7 @@ namespace Slutprojekt
         private bool environment;
         private bool control;
 
-        public Citizens(){
+        public Citizen(){
             //konstruktor som assignar vad citizens har för attribut, eller vill ha
             //assignar age group
             Random generator = new Random();
