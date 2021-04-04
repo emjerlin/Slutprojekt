@@ -5,14 +5,32 @@ namespace Slutprojekt
     public class Citizen
     {
         private string ageGroup;
+        public string AgeGroup{
+            get{return ageGroup;}
+        }
         private string[] ageGroups ={"Young","MiddleAge","Old"};
         private int healthLevel;
+        public int HealthLevel{
+            get{return healthLevel;}
+        }
 
         //These bools describe if the citizen feels about these topics. True means they want more than medium, and false means they want less
         private bool healthcare;
+        public bool HealthCare{
+            get{return healthcare;}
+        }
         private bool housing;
+        public bool Housing{
+            get{return housing;}
+        }
         private bool environment;
+        public bool Environment{
+            get{return environment;}
+        }        
         private bool control;
+        public bool Control{
+            get{return control;}
+        }
 
         public Citizen(){
             //konstruktor som assignar vad citizens har för attribut, eller vill ha

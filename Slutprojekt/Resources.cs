@@ -5,7 +5,10 @@ namespace Slutprojekt
 {
     public class Resources
     {
-        public List<Citizen> citizens = new List<Citizen>();//kunna accessa denna från program
+        private List<Citizen> citizens = new List<Citizen>();//kunna accessa denna från program
+        public List<Citizen> Citizens{
+            get{return citizens;}
+        }
         private int money;
         public int Money{
             get{return money;}
