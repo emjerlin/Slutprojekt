@@ -9,6 +9,11 @@ namespace Slutprojekt
         public List<Citizen> Citizens{
             get{return citizens;}
         }
+        private List<Law> laws = new List<Law>();
+        public List<Law> Laws{
+            get{return laws;}
+        }
+        
         private int money;
         public int Money{
             get{return money;}
@@ -47,6 +52,10 @@ namespace Slutprojekt
                 citizens.Add(new Citizen());
             }
             
+        }
+        public void NewLaw(){
+            laws.Add(new Law());
+            Console.WriteLine("Law number " + laws[laws.Count]);
         }
     }
     

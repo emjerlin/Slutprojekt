@@ -9,6 +9,9 @@ namespace Slutprojekt
             get{return ageGroup;}
         }
         private string[] ageGroups ={"Young","MiddleAge","Old"};
+        public string[] AgeGroups{
+            get{return ageGroups;}
+        }
         private int healthLevel;
         public int HealthLevel{
             get{return healthLevel;}

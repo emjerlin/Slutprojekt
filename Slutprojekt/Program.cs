@@ -24,9 +24,12 @@ namespace Slutprojekt
             Console.WriteLine("");
             Console.WriteLine("Oh, there's also a couple [resources] you should pay attention to. [Money] helps you hire workers, and trade to get resources. [Food]... Keeps your citizens fed, which can be good. [Weapons] help you incase of the *unlikely* occurence of revolting citizens, but that should be easily avoided if you keep and eye on the overall [happiness]");
             Console.WriteLine("");
-
-
             
+            Console.WriteLine("Let's try it out!");
+
+            //skapa en for loop som innehåller allt som ska hända under en runda. Laws sparas under denna tid och kan printas ut under tiden
+                  newGame.NewLaw();
+       
 
             Console.ReadLine();
         }
