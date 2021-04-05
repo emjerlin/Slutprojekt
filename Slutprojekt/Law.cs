@@ -4,11 +4,6 @@ namespace Slutprojekt
 {
     public class Law
     {
-
-        private bool passed;
-        public bool Passed{
-            get{return passed;}
-        }
        private string[] allowOrForbidList ={"Allow","Forbid"};
        private string allowOrForbid;
        private string[] environmentNounList ={"potatoes","guns","mice"};

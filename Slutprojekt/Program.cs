@@ -55,7 +55,9 @@ namespace Slutprojekt
                 Console.WriteLine(newGame.laws[i].MadLib());
             }
             Console.ReadLine();
-           
+           //nästa steg är att göra att lagarna har konsekvenser
+
+           //ha en del av spelet där man väljer mellan att bygga eller göra annat. action choice screen
         }
     }
 }
