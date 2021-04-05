@@ -4,6 +4,11 @@ namespace Slutprojekt
 {
     public class Law
     {
+
+        private bool passed;
+        public bool Passed{
+            get{return passed;}
+        }
        private string[] allowOrForbidList ={"Allow","Forbid"};
        private string allowOrForbid;
        private string[] environmentNounList ={"potatoes","guns","mice"};
@@ -26,6 +31,25 @@ namespace Slutprojekt
         int i = 0;
         Console.WriteLine(allowOrForbid + " " + environmentNoun + " to be eaten" );
         return i;
+    }
+    public bool PassOrNot(){
+        int loop=0;
+        while(loop==0){
+        string verdict = Console.ReadLine();
+        if(verdict=="pass"){
+            loop++;
+            return true;
+        }
+        else if (verdict=="deny"){
+            loop++;
+            return false;
+        }
+        else{
+            Console.WriteLine("Only respond with pass or deny");
+            return false;
+        }
+        }
+        return false;
     }
     }
        
