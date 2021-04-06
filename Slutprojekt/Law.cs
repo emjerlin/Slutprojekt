@@ -30,12 +30,12 @@ namespace Slutprojekt
     public bool PassOrNot(){
         int loop=0;
         while(loop==0){
-        string verdict = Console.ReadLine();
-        if(verdict=="pass"){
+        string a = Console.ReadLine();
+        if(a=="pass"){
             loop++;
             return true;
         }
-        else if (verdict=="deny"){
+        else if (a=="deny"){
             loop++;
             return false;
         }
