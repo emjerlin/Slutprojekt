@@ -45,6 +45,10 @@ namespace Slutprojekt
                 Console.WriteLine("Good job! You successfully " + tutorial + " a law!");
                 System.Threading.Thread.Sleep(2000);
 
+
+
+
+
             //skapa en for loop som innehåller allt som ska hända under en runda. Laws sparas under denna tid och kan printas ut under tiden
             for (int i = 0; i < 5; i++)
             {
