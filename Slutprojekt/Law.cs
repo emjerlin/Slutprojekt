@@ -4,46 +4,33 @@ namespace Slutprojekt
 {
     public class Law
     {
-       private string[] allowOrForbidList ={"Allow","Forbid"};
+       private List<string> allowOrForbidList = new List<string>(){"Allow","Forbid"};
        private string allowOrForbid;
-       private string[] environmentNounList ={"potatoes","guns","mice"};
-       private string environmentNoun;
-        private string[] healthcareNounList ={"medicine","surgery","vaccines"};
-        private string healthcareNoun;
-        private string[] verbList ={"slaughtered","used in warfare","sexualized","included"};
+       private List<string> nounList = new List<string>(){"potatoes","guns","mice","dogs","trolls","spoons","shoes"};
+       private string noun;
+        private List<string> verbList = new List<string>(){"slaughtered","used in warfare","sexualized","included","burned","eaten","allowed to marry"};
         private string verb;
-        private string[] healthcareVerbList={"covered by insurance",""};
-        private string healthcareVerb;
         public int i = 0;
 
         //göra en konstruktor som randomiserar dessa för varje lag så de sen kan printas med madlib
 
        //Citizen.AgeGroups //young, middle, old. To be used in laws
-    
-    public Law(){
+        public Law(){
         Random generator = new Random();
-        i = generator.Next(3);
        
          allowOrForbid = allowOrForbidList[generator.Next(2)]; 
-         environmentNoun = environmentNounList[generator.Next(3)];
-         healthcareNoun = healthcareNounList[generator.Next(3)];
-         verb = verbList[generator.Next(4)];
+         noun = nounList[generator.Next(nounList.Count)];
+         verb = verbList[generator.Next(verbList.Count)];
+         nounList.Remove(noun);
+         verbList.Remove(verb);
         
        
     }
     public int MadLib(){
-        if (i==0){ //environment
-        Console.WriteLine(allowOrForbid + " " + environmentNoun + " to be " + verb );
-         }
-        else if (i==1){ //healthcare
-        Console.WriteLine(allowOrForbid + " " + healthcareNoun + " to be " + heathcareVerb );
-        }
-        else if (i==2){ //control
-        Console.WriteLine(allowOrForbid + " " + environmentNoun + " to be " + verb );
-        }
+        Console.WriteLine(allowOrForbid + " " + noun + " to be " + verb );
         int randomNumber = 0;
-        
         return randomNumber;
+        //om jag hade mer tid skulle jag se till att fixa att man inte skulle kunna ha dubletter
     }
     public bool PassOrNot(){
         int loop=0;
@@ -65,6 +52,7 @@ namespace Slutprojekt
         return false;
     }
     }
+    
        
 }
 

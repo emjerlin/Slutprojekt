@@ -9,23 +9,30 @@ namespace Slutprojekt
         {
             Resources newGame = new Resources();//creates a resource class, which creates a new game
 
-            Console.WriteLine(newGame.Citizens[1].AgeGroup);    
+            //Console.WriteLine(newGame.Citizens[1].AgeGroup);    
 
             //flytta konversationer till klasser, metoder i klasser
             Console.WriteLine("Welcome oh great leader! We are looking to grow our kingdom, and we hope you can guide us to fame and glory");
+            Console.WriteLine("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.Clear();
             Console.WriteLine("The kingdom currently has " + newGame.Citizens.Count + " citizens. That won't do...");
-            
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();//add a 3 option response system with arrow keys
             Console.Clear();
 
             Console.WriteLine("Let's get you familiar with how to rule a kingdom! There are a lot of decisions a ruler must make. Building houses, managing food in the country, and passing laws");
             Console.WriteLine("");
-            Console.WriteLine("In order to keep a country (happy), you must keep an eye on the wishes of the citizens. Different citizens want more or less focus on (housing), (environment), (healthcare) and (control).");
-            Console.WriteLine("");
+            Console.WriteLine("In order to keep a country (happy), you must keep an eye on the wishes of the citizens.");
+            Console.WriteLine("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.Clear();
             Console.WriteLine("Oh, there's also a couple (resources) you should pay attention to. (Money) helps you hire workers, and trade to get resources. (Food)... Keeps your citizens fed, which can be good. (Weapons) help you incase of the *unlikely* occurence of revolting citizens, but that should be easily avoided if you keep an eye on the overall (happiness)");
             
             Console.WriteLine("Let's try it out! (This law won't affect the rest of your game, and is only meant to make you familiar with the mechanics)");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
+            Console.Clear();
 
                 newGame.NewLaw();
                 string tutorial ="";
@@ -44,8 +51,10 @@ namespace Slutprojekt
                 }
                 Console.WriteLine("Good job! You successfully " + tutorial + " a law!");
                 System.Threading.Thread.Sleep(2000);
-
-
+                Console.WriteLine("Hmm.. I could teach you how to do everything else, but most other kings learn better by doing! Good luck!");
+                Console.WriteLine("Press ENTER to continue...");
+                Console.ReadLine();
+                Console.Clear();
 
 
 
@@ -53,6 +62,7 @@ namespace Slutprojekt
             for (int i = 0; i < 5; i++)
             {
                 Console.Clear();
+                Console.WriteLine("Citizens: " + newGame.Citizens.Count + " Money: " + newGame.Money +" Food: " + newGame.Food);
                 int spotFilled = 0;
                 while (spotFilled ==0){
                 newGame.NewLaw();
