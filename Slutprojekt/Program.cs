@@ -63,24 +63,21 @@ namespace Slutprojekt
             {
                 Console.Clear();
                 newGame.PrintStats();
+
                 //People move in
-                if (newGame.Citizens[1].Happiness> 100){
-                    Console.WriteLine("Your town is so happy, they invited their friends!");
-                    newGame.Citizens.Add(new Citizen());
-                }
-                else if (newGame.Citizens[1].Happiness< 100){
-                    Console.WriteLine("Your town is sad, some of them up and left...");
-                }
+                newGame.HappinessCheck();
                 Console.WriteLine("Press ENTER to continue...");
                 Console.ReadLine();
                 Console.Clear();
                 //om ingen av dessa stämmer dvs det är 100 exakt händer inget
                 newGame.PrintStats();
+
                 //Food subtraction part
                 newGame.FeedingTime();
                 Console.WriteLine("Press ENTER to continue...");
                 Console.ReadLine();
                 Console.Clear();
+
                 //Law part
                 for (int lawLoop = 0; lawLoop < 5; lawLoop++)
                 {

@@ -31,6 +31,8 @@ namespace Slutprojekt
             get{return buildingMaterial;}
             set{buildingMaterial=value;}
         }
+        private int totalHappiness;
+        private int averageHappiness;
         public Resources(){
             money = 1000;
             food = 30;
@@ -49,6 +51,24 @@ namespace Slutprojekt
                 citizens.Add(new Citizen());
             }
             
+        }
+        public void HappinessCheck(){
+            totalHappiness=0;
+            for (int i = 0; i < citizens.Count; i++)
+            {
+                totalHappiness= totalHappiness + citizens[i].Happiness;
+                Console.WriteLine("total happy " +totalHappiness);
+            }
+            averageHappiness = totalHappiness/citizens.Count;
+            Console.WriteLine("average " + averageHappiness);
+            
+            if (citizens[1].Happiness> 100){
+                    Console.WriteLine("Your town is so happy, they invited their friends!");
+                    citizens.Add(new Citizen());
+                }
+                else if (citizens[1].Happiness< 100){
+                    Console.WriteLine("Your town is sad, some of them up and left...");
+                }
         }
         public void FeedingTime(){
             food = food-2*citizens.Count;
