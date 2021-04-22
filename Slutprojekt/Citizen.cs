@@ -16,8 +16,14 @@ namespace Slutprojekt
         public int HealthLevel{
             get{return healthLevel;}
         }
+        private int happiness;
+        public int Happiness{
+            get{return happiness;}
+        }
 
-        //These bools describe if the citizen feels about these topics. True means they want more than medium, and false means they want less
+        /*These bools describe if the citizen feels about these topics. True means they want more than medium, and false means they want less
+        I chose to remove them because it would make my game too hard to make/take too much time
+
         private bool healthcare;
         public bool HealthCare{
             get{return healthcare;}
@@ -33,7 +39,7 @@ namespace Slutprojekt
         private bool control;
         public bool Control{
             get{return control;}
-        }
+        }*/
 
         public Citizen(){
             //konstruktor som assignar vad citizens har för attribut, eller vill ha
@@ -50,7 +56,9 @@ namespace Slutprojekt
             float healthLevelFloat = healthLevelBase * aMod;
             healthLevel = (int)Math.Round(healthLevelFloat);
 
-            //mer eller mindre av saken. True = mer. False = mindre
+            happiness=100;
+
+            /*mer eller mindre av saken. True = mer. False = mindre
             
             int healthBool = generator.Next(2); //skapar en int som är 0 eller 1
             if (healthBool ==0){healthcare = false;}else{healthcare=true;}
@@ -63,8 +71,14 @@ namespace Slutprojekt
 
              int controlBool = generator.Next(2); //skapar en int som är 0 eller 1
             if (healthBool ==0){healthcare = false;}else{healthcare=true;}
+            */
             
-
+        }
+        public void MakeHappy(){
+            happiness=+10;
+        }
+        public void MakeUnhappy(){
+             happiness=-10;
         }
     }
 }

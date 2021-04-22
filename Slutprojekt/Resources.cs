@@ -8,6 +8,7 @@ namespace Slutprojekt
         private List<Citizen> citizens = new List<Citizen>();//kunna accessa denna från program
         public List<Citizen> Citizens{
             get{return citizens;}
+            set{citizens=value;}
         }
         public List<Law> laws = new List<Law>();
         private int money;

@@ -59,11 +59,25 @@ namespace Slutprojekt
 
 
             //skapa en for loop som innehåller allt som ska hända under en runda. Laws sparas under denna tid och kan printas ut under tiden
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)//Varje loop är 1. People moving in depending on happiness average not below 100 (used as 0). 2. Food being subtracted or starvation, happiness down and people down 3. Law phase. Passing a law that affects happiness 4. Buy phase. Buy houses or food
             {
                 Console.Clear();
-                Console.WriteLine("Citizens: " + newGame.Citizens.Count + " Money: " + newGame.Money +" Food: " + newGame.Food);
-                int spotFilled = 0;
+
+                //People move in
+                if (newGame.Citizens[1].Happiness> 100){
+                    Console.WriteLine("Your town is so happy, they invited their friends!");
+                    newGame.Citizens.Add(new Citizen());
+                }
+                else if (newGame.Citizens[1].Happiness< 100){
+                    Console.WriteLine("Your town is sad, some of them up and left...");
+                }
+                //om ingen av dessa stämmer dvs det är 100 exakt händer inget
+                  Console.WriteLine("Citizens: " + newGame.Citizens.Count + " Money: " + newGame.Money +" Food: " + newGame.Food + " Happiness: " + newGame.Citizens[1].Happiness);
+
+                //Law part
+                for (int lawLoop = 0; lawLoop < 5; lawLoop++)
+                {
+                 int spotFilled = 0;
                 while (spotFilled ==0){
                 newGame.NewLaw();
                 Console.WriteLine(newGame.laws[i].MadLib());//writes out the law
@@ -79,15 +93,17 @@ namespace Slutprojekt
                     Console.WriteLine("You didn't pass the law");
                 }
                  System.Threading.Thread.Sleep(2000);
-                }
-            }
-            Console.Clear();
-            Console.WriteLine("Done!These are the laws you passed:");
-            for (int i = 0; i < 5; i++)
-            {
+                }   
+                }  
+                Console.Clear();
+                Console.WriteLine("Done!These are the laws you passed:");
+                for (int j= 0; j < 5; j++)
+                {
                 Console.WriteLine(newGame.laws[i].MadLib());
+                }
+                Console.ReadLine();
             }
-            Console.ReadLine();
+            
            //nästa steg är att göra att lagarna har konsekvenser
 
            //ha en del av spelet där man väljer mellan att bygga eller göra annat. action choice screen
