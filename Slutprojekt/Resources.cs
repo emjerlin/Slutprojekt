@@ -50,9 +50,22 @@ namespace Slutprojekt
             }
             
         }
+        public void FeedingTime(){
+            food = food-2*citizens.Count;
+            if(food<0){
+                food=0;
+                Console.WriteLine("You couldn't give food to all your citizens. They are starving, and are unhappy...");
+            }
+            else if(food>0){
+                Console.WriteLine("You gave your citizens " + 2*citizens.Count + " food");
+            }
+        }
         public void NewLaw(){
             laws.Add(new Law());
             Console.WriteLine("Law number " + laws.Count);
+        }
+        public void PrintStats(){
+            Console.WriteLine("Citizens: " + Citizens.Count + " Money: " + Money +" Food: " + Food + " Happiness: " + Citizens[1].Happiness);
         }
     }
     

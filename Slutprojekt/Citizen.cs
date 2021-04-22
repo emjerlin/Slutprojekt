@@ -75,10 +75,10 @@ namespace Slutprojekt
             
         }
         public void MakeHappy(){
-            happiness=+10;
+            happiness=happiness+10;
         }
         public void MakeUnhappy(){
-             happiness=-10;
+             happiness=happiness-10;
         }
     }
 }
