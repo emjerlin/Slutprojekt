@@ -33,6 +33,7 @@ namespace Slutprojekt
         }
         private int totalHappiness;
         private int averageHappiness;
+        private string reason;
         public Resources(){
             money = 1000;
             food = 30;
@@ -42,6 +43,12 @@ namespace Slutprojekt
             {
                 citizens.Add(new Citizen());
             }
+            totalHappiness=0;
+            for (int i = 0; i < citizens.Count; i++)
+            {
+                totalHappiness= totalHappiness + citizens[i].Happiness;
+            }
+            averageHappiness = totalHappiness/citizens.Count;
         }
         public void Build(){
             buildingMaterial-=20;
@@ -57,35 +64,99 @@ namespace Slutprojekt
             for (int i = 0; i < citizens.Count; i++)
             {
                 totalHappiness= totalHappiness + citizens[i].Happiness;
-                Console.WriteLine("total happy " +totalHappiness);
             }
             averageHappiness = totalHappiness/citizens.Count;
-            Console.WriteLine("average " + averageHappiness);
+            PrintStats();
             
-            if (citizens[1].Happiness> 100){
-                    Console.WriteLine("Your town is so happy, they invited their friends!");
-                    citizens.Add(new Citizen());
+            if (averageHappiness> 100){
+            Console.WriteLine("Your town is so happy, they invited their friends!");
+            citizens.Add(new Citizen());
+            }
+            else if (averageHappiness< 100){
+            Console.WriteLine("Your town is sad, some of them up and left...");
+            int removeInt = citizens.Count-2;
+            for (int i = citizens.Count; i > removeInt; i--)
+            {
+                if(citizens.Count==0){
+                    reason="zerociti";
+                    GameOver(reason);
                 }
-                else if (citizens[1].Happiness< 100){
-                    Console.WriteLine("Your town is sad, some of them up and left...");
+                else{
+                citizens.Remove(citizens[i-1]);
                 }
+            }
+            }
+            else if (averageHappiness == 100){
+                Console.WriteLine("Your town is perfectly... Okay. They're not happy, not sad. Nothing happened");
+            }
         }
         public void FeedingTime(){
             food = food-2*citizens.Count;
             if(food<0){
                 food=0;
                 Console.WriteLine("You couldn't give food to all your citizens. They are starving, and are unhappy...");
+                Random generator = new Random();
+                    for (int j = 0; j < citizens.Count; j++)
+                    {
+                     citizens[j].Happiness = citizens[j].Happiness-generator.Next(10);
+                    }
+                
             }
             else if(food>0){
                 Console.WriteLine("You gave your citizens " + 2*citizens.Count + " food");
             }
+        }
+        public void LawTime(int i){
+            int spotFilled = 0;
+            while (spotFilled ==0){
+            PrintStats();
+            NewLaw();
+            laws[i].MadLib();//writes out the law
+
+            Console.WriteLine("Do you want to [pass] or [deny] the law?");
+            bool verdict = laws[i].PassOrNot();
+            if(verdict==true){
+                Console.WriteLine("You passed the law");
+                if(laws[i].GoodLaw == false){
+                    Random generator = new Random();
+                    for (int j = 0; j < citizens.Count; j++)
+                    {
+                     citizens[j].Happiness = citizens[j].Happiness-generator.Next(10);
+                    }
+                }
+                else if(laws[i].GoodLaw == true){
+                    Random generator = new Random();
+                    for (int j = 0; j < citizens.Count; j++)
+                    {
+                     citizens[j].Happiness = citizens[j].Happiness+generator.Next(10);
+                    }
+                }
+                spotFilled++;
+            }
+            if(verdict==false){
+                laws.RemoveAt(i);//make work so you can remove one law when you deny it
+                Console.WriteLine("You didn't pass the law");
+            }
+                System.Threading.Thread.Sleep(2000);
+                Console.Clear();
+            }   
         }
         public void NewLaw(){
             laws.Add(new Law());
             Console.WriteLine("Law number " + laws.Count);
         }
         public void PrintStats(){
-            Console.WriteLine("Citizens: " + Citizens.Count + " Money: " + Money +" Food: " + Food + " Happiness: " + Citizens[1].Happiness);
+            Console.WriteLine("Citizens: " + citizens.Count + " Money: " + Money +" Food: " + Food + " Happiness: " + averageHappiness);
+        }
+        public void GameOver(string reason){
+            Console.WriteLine("You lost...");
+            if(reason=="zerociti"){
+                Console.WriteLine("Your incompetent rule has left the town completely empty.. No one wants to live here. I don't blame them, honestly. I'm leaving too");
+                System.Threading.Thread.Sleep(500);
+                Console.WriteLine("- royal councelor has left the game -");
+            }
+           System.Threading.Thread.Sleep(2000);
+           System.Environment.Exit(0);
         }
     }
     

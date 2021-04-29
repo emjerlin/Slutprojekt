@@ -19,6 +19,7 @@ namespace Slutprojekt
         private int happiness;
         public int Happiness{
             get{return happiness;}
+            set{happiness=value;}
         }
 
         /*These bools describe if the citizen feels about these topics. True means they want more than medium, and false means they want less
