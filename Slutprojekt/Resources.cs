@@ -62,7 +62,11 @@ namespace Slutprojekt
         public void HappinessCheck(){
             totalHappiness=0;
             for (int i = 0; i < citizens.Count; i++)
-            {
+            if(citizens.Count==0){
+                    reason="zerociti";
+                    GameOver(reason);
+                }
+            else{
                 totalHappiness= totalHappiness + citizens[i].Happiness;
             }
             averageHappiness = totalHappiness/citizens.Count;
@@ -118,6 +122,7 @@ namespace Slutprojekt
             if(verdict==true){
                 Console.WriteLine("You passed the law");
                 if(laws[i].GoodLaw == false){
+                    Console.WriteLine("You.. Shouldn't have passed that law");
                     Random generator = new Random();
                     for (int j = 0; j < citizens.Count; j++)
                     {
@@ -125,6 +130,7 @@ namespace Slutprojekt
                     }
                 }
                 else if(laws[i].GoodLaw == true){
+                    Console.WriteLine("Your citizens are really happy you approved that!");
                     Random generator = new Random();
                     for (int j = 0; j < citizens.Count; j++)
                     {
@@ -141,21 +147,30 @@ namespace Slutprojekt
                 Console.Clear();
             }   
         }
+        public void BuyTime(){
+            Console.WriteLine("A caravan has come to town! Would you like anythin'?");
+            Console.WriteLine("[Food]  [Weapons]");
+            string buyResponse = Console.ReadLine();
+        }
         public void NewLaw(){
             laws.Add(new Law());
             Console.WriteLine("Law number " + laws.Count);
         }
         public void PrintStats(){
             Console.WriteLine("Citizens: " + citizens.Count + " Money: " + Money +" Food: " + Food + " Happiness: " + averageHappiness);
+            if(citizens.Count==0){
+                    reason="zerociti";
+                    GameOver(reason);
+                }
         }
         public void GameOver(string reason){
             Console.WriteLine("You lost...");
             if(reason=="zerociti"){
                 Console.WriteLine("Your incompetent rule has left the town completely empty.. No one wants to live here. I don't blame them, honestly. I'm leaving too");
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(1000);
                 Console.WriteLine("- royal councelor has left the game -");
             }
-           System.Threading.Thread.Sleep(2000);
+           System.Threading.Thread.Sleep(10000);
            System.Environment.Exit(0);
         }
     }

@@ -80,6 +80,8 @@ namespace Slutprojekt
                 Console.WriteLine("Press ENTER to continue...");
                 Console.ReadLine();
                 Console.Clear();
+
+                newGame.BuyTime();
             }
                 Console.WriteLine("Done!These are the laws you passed:");
                 for (int j= 0; j < 5; j++)
