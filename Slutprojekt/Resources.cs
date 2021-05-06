@@ -77,6 +77,16 @@ namespace Slutprojekt
             citizens.Add(new Citizen());
             }
             else if (averageHappiness< 100){
+            if (averageHappiness<50){
+            if(averageHappiness<30){
+            Console.WriteLine("Don't tell me I didn't warn you");
+            Revolt();
+            }
+            else{
+            Console.WriteLine("Your town is... Ehem.. VERY unhappy.. I don't know about you, but I'd suggest in investing in some protection, I think I see pitchforks");
+            }
+            }
+            else{
             Console.WriteLine("Your town is sad, some of them up and left...");
             int removeInt = citizens.Count-2;
             for (int i = citizens.Count; i > removeInt; i--)
@@ -90,9 +100,24 @@ namespace Slutprojekt
                 }
             }
             }
+            }
             else if (averageHappiness == 100){
                 Console.WriteLine("Your town is perfectly... Okay. They're not happy, not sad. Nothing happened");
             }
+            
+        }
+        public void HappinessCheckSmall(){
+            totalHappiness=0;
+            for (int i = 0; i < citizens.Count; i++)
+            if(citizens.Count==0){
+                    reason="zerociti";
+                    GameOver(reason);
+                }
+            else{
+                totalHappiness= totalHappiness + citizens[i].Happiness;
+            }
+            averageHappiness = totalHappiness/citizens.Count;
+            PrintStats();
         }
         public void FeedingTime(){
             food = food-2*citizens.Count;
@@ -113,7 +138,8 @@ namespace Slutprojekt
         public void LawTime(int i){
             int spotFilled = 0;
             while (spotFilled ==0){
-            PrintStats();
+            Console.Clear();
+            HappinessCheckSmall();
             NewLaw();
             laws[i].MadLib();//writes out the law
 
@@ -139,18 +165,76 @@ namespace Slutprojekt
                 }
                 spotFilled++;
             }
-            if(verdict==false){
-                laws.RemoveAt(i);//make work so you can remove one law when you deny it
+            else if(verdict==false){
                 Console.WriteLine("You didn't pass the law");
+                if(laws[i].GoodLaw == false){
+                    Console.WriteLine("Good think you denied that...");
+                    Random generator = new Random();
+                    for (int j = 0; j < citizens.Count; j++)
+                    {
+                     citizens[j].Happiness = citizens[j].Happiness+generator.Next(5);
+                    }
+                }
+                else if(laws[i].GoodLaw == true){
+                    Console.WriteLine("Your citizens are sad you did that");
+                    Random generator = new Random();
+                    for (int j = 0; j < citizens.Count; j++)
+                    {
+                     citizens[j].Happiness = citizens[j].Happiness-generator.Next(5);
+                    }
+                }
+                 laws.RemoveAt(i);//make work so you can remove one law when you deny it
             }
                 System.Threading.Thread.Sleep(2000);
                 Console.Clear();
             }   
         }
         public void BuyTime(){
+            Console.Clear();
+            PrintStats();
+            int repeat = 0;
+            while(repeat ==0){
+            Console.Clear();
             Console.WriteLine("A caravan has come to town! Would you like anythin'?");
-            Console.WriteLine("[Food]  [Weapons]");
+            Console.WriteLine("[Food]  [Weapons] or [Nothing]");
             string buyResponse = Console.ReadLine();
+            if(buyResponse=="food"){
+                int buyFoodLoop =0;
+                while(buyFoodLoop==0){
+                Console.Clear();
+                PrintStats();
+                Console.WriteLine("How much would you like? We take 3 gold for every piece of food");
+                string amountFoodString = Console.ReadLine();
+                int amountFood;
+                bool lyckad = int.TryParse(amountFoodString,out amountFood);
+                int cost = amountFood * 3;
+                if(cost>money){
+                    lyckad=false;
+                }
+
+                if (lyckad){
+                    money = money-cost;
+                    food= food + amountFood;
+                    buyFoodLoop++;
+                }
+                else{
+                    Console.WriteLine("You can't pay for that. Or, you're not saying a coherent number");
+                }
+                }
+
+                repeat++;
+            }
+            else if(buyResponse=="weapons"){
+                repeat++;
+            }
+            else if(buyResponse=="nothing"){
+                repeat++;
+            }
+            else{
+                Console.WriteLine("They are... Waiting for your response, my lord. You need to work on your pronounciation");
+                
+            }
+            }
         }
         public void NewLaw(){
             laws.Add(new Law());
@@ -163,12 +247,22 @@ namespace Slutprojekt
                     GameOver(reason);
                 }
         }
+        public void Revolt(){
+
+
+            reason="revolt";
+            GameOver(reason);
+        }
         public void GameOver(string reason){
             Console.WriteLine("You lost...");
             if(reason=="zerociti"){
                 Console.WriteLine("Your incompetent rule has left the town completely empty.. No one wants to live here. I don't blame them, honestly. I'm leaving too");
                 System.Threading.Thread.Sleep(1000);
                 Console.WriteLine("- royal councelor has left the game -");
+            }
+            else if (reason =="revolt"){
+                Console.WriteLine("You failed to keep your citizens out of the castle, and they have committed a coup. You are exiled, lucky having escaped with your life");
+                Console.WriteLine("I thought you'd be different... Well, time to find a new king, and calm some citizens.. Leave");
             }
            System.Threading.Thread.Sleep(10000);
            System.Environment.Exit(0);
