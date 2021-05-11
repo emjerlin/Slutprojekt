@@ -59,7 +59,7 @@ namespace Slutprojekt
 
 
             //skapa en for loop som innehåller allt som ska hända under en runda. Laws sparas under denna tid och kan printas ut under tiden
-            for (int i = 0; i < 5; i++)//Varje loop är 1. People moving in depending on happiness average not below 100 (used as 0). 2. Food being subtracted or starvation, happiness down and people down 3. Law phase. Passing a law that affects happiness 4. Buy phase. Buy houses or food
+            for (int i = 0; i < 15; i++)//Varje loop är 1. People moving in depending on happiness average not below 100 (used as 0). 2. Food being subtracted or starvation, happiness down and people down 3. Law phase. Passing a law that affects happiness 4. Buy phase. Buy houses or food
             {
                 Console.Clear();
                 //People move in
@@ -83,12 +83,12 @@ namespace Slutprojekt
 
                 newGame.BuyTime();
             }
-                Console.WriteLine("Done!These are the laws you passed:");
+                /*Console.WriteLine("Done!These are the laws you passed:");
                 for (int j= 0; j < 5; j++)
                 {
                 newGame.laws[j].MadLib();
                 }
-                Console.ReadLine();
+                Console.ReadLine();*/
             
             
            //nästa steg är att göra att lagarna har konsekvenser

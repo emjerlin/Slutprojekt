@@ -48,11 +48,13 @@ namespace Slutprojekt
         while(loop==0){
         string a = Console.ReadLine();
         if(a=="pass"){
+            Console.Clear();
             loop++;
             return true;
             
         }
         else if (a=="deny"){
+            Console.Clear();
             loop++;
             return false;
         }

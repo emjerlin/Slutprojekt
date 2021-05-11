@@ -57,7 +57,7 @@ namespace Slutprojekt
             float healthLevelFloat = healthLevelBase * aMod;
             healthLevel = (int)Math.Round(healthLevelFloat);
 
-            happiness=100;
+            happiness=0;
 
             /*mer eller mindre av saken. True = mer. False = mindre
             

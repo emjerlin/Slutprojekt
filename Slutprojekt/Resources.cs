@@ -26,19 +26,19 @@ namespace Slutprojekt
             get{return weapons;}
             set{weapons=value;}
         }
-        private int buildingMaterial;
+        /*private int buildingMaterial;
         public int BuildingMaterial{
             get{return buildingMaterial;}
             set{buildingMaterial=value;}
-        }
+        }*/
         private int totalHappiness;
         private int averageHappiness;
         private string reason;
         public Resources(){
-            money = 1000;
-            food = 30;
+            money = 200;
+            food = 50;
             weapons = 0;
-            buildingMaterial = 0;
+            //buildingMaterial = 0;
             for (int i = 0; i < 5; i++)
             {
                 citizens.Add(new Citizen());
@@ -51,7 +51,7 @@ namespace Slutprojekt
             averageHappiness = totalHappiness/citizens.Count;
         }
         public void Build(){
-            buildingMaterial-=20;
+            //buildingMaterial-=20;
             money-=200;
             for (int i = 0; i < 10; i++)
             {
@@ -63,6 +63,7 @@ namespace Slutprojekt
             totalHappiness=0;
             for (int i = 0; i < citizens.Count; i++)
             if(citizens.Count==0){
+                    Console.Clear();
                     reason="zerociti";
                     GameOver(reason);
                 }
@@ -72,13 +73,13 @@ namespace Slutprojekt
             averageHappiness = totalHappiness/citizens.Count;
             PrintStats();
             
-            if (averageHappiness> 100){
+            if (averageHappiness> 0){
             Console.WriteLine("Your town is so happy, they invited their friends!");
             citizens.Add(new Citizen());
             }
-            else if (averageHappiness< 100){
-            if (averageHappiness<50){
-            if(averageHappiness<30){
+            else if (averageHappiness< 0){
+            if (averageHappiness<-20){
+            if(averageHappiness<-50){
             Console.WriteLine("Don't tell me I didn't warn you");
             Revolt();
             }
@@ -92,6 +93,7 @@ namespace Slutprojekt
             for (int i = citizens.Count; i > removeInt; i--)
             {
                 if(citizens.Count==0){
+                    Console.Clear();
                     reason="zerociti";
                     GameOver(reason);
                 }
@@ -101,7 +103,7 @@ namespace Slutprojekt
             }
             }
             }
-            else if (averageHappiness == 100){
+            else if (averageHappiness == 0){
                 Console.WriteLine("Your town is perfectly... Okay. They're not happy, not sad. Nothing happened");
             }
             
@@ -110,6 +112,7 @@ namespace Slutprojekt
             totalHappiness=0;
             for (int i = 0; i < citizens.Count; i++)
             if(citizens.Count==0){
+                Console.Clear();
                     reason="zerociti";
                     GameOver(reason);
                 }
@@ -225,6 +228,28 @@ namespace Slutprojekt
                 repeat++;
             }
             else if(buyResponse=="weapons"){
+                 int buyWeaponsLoop =0;
+                while(buyWeaponsLoop==0){
+                Console.Clear();
+                PrintStats();
+                Console.WriteLine("How much would you like? We take 40 gold for every weapon");
+                string amountWeaponsString = Console.ReadLine();
+                int amountWeapons;
+                bool lyckad = int.TryParse(amountWeaponsString,out amountWeapons);
+                int cost = amountWeapons * 40;
+                if(cost>money){
+                    lyckad=false;
+                }
+
+                if (lyckad){
+                    money = money-cost;
+                    weapons= weapons + amountWeapons;
+                    buyWeaponsLoop++;
+                }
+                else{
+                    Console.WriteLine("You can't pay for that. Or, you're not saying a coherent number");
+                }
+                }
                 repeat++;
             }
             else if(buyResponse=="nothing"){
