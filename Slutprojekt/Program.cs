@@ -7,6 +7,7 @@ namespace Slutprojekt
     {
         static void Main(string[] args)
         {
+            //Förbättra: Arv i flera led, 2 steg. Fler generiska klasser. 
             Resources newGame = new Resources();//creates a resource class, which creates a new game
 
             //Console.WriteLine(newGame.Citizens[1].AgeGroup);    
@@ -59,7 +60,7 @@ namespace Slutprojekt
 
 
             //skapa en for loop som innehåller allt som ska hända under en runda. Laws sparas under denna tid och kan printas ut under tiden
-            for (int i = 0; i < 15; i++)//Varje loop är 1. People moving in depending on happiness average not below 100 (used as 0). 2. Food being subtracted or starvation, happiness down and people down 3. Law phase. Passing a law that affects happiness 4. Buy phase. Buy houses or food
+            for (int round = 0; round < 15; round++)//Varje loop är 1. People moving in depending on happiness average not below 100 (used as 0). 2. Food being subtracted or starvation, happiness down and people down 3. Law phase. Passing a law that affects happiness 4. Buy phase. Buy houses or food
             {
                 Console.Clear();
                 //People move in
@@ -76,7 +77,7 @@ namespace Slutprojekt
                 Console.Clear();
 
                 //Law part
-                newGame.LawTime(i);
+                newGame.LawTime(round);
                 Console.WriteLine("Press ENTER to continue...");
                 Console.ReadLine();
                 Console.Clear();
