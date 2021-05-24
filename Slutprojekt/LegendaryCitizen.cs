@@ -10,11 +10,10 @@ namespace Slutprojekt
         private string adjective;
         private List<string> adjectiveList = new List<string>(){"Super","Glorious","Speedy","Farty","Master","Calm","Shook"};
         private string name;
-        private List<string> nameList = new List<string>(){"Steve","Martin","John","Michael","Kevin","Earl","Carl"};
-        public LegendaryCitizen(){
+        public LegendaryCitizen(Queue<string> nameQueue){
             Random generator = new Random();
             adjective = adjectiveList[generator.Next(adjectiveList.Count)];
-            name = nameList[generator.Next(nameList.Count)];
+            name= nameQueue.Dequeue();//returnar namnet längst fram i listan och tar sedan bort den. Varje legendary citizen kommer ha ett unikt namn
             title= adjective + " " + name;
             HealthLevel= HealthLevel*4;
         }

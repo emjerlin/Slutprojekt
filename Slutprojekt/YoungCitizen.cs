@@ -23,5 +23,9 @@ namespace Slutprojekt
             float healthLevelFloat = healthLevelBase * aMod;
             healthLevel = (int)Math.Round(healthLevelFloat);
         }
+        public override void MakeHappy()
+        {
+            happiness=happiness+ 15;
+        }
     }
 }

@@ -6,15 +6,15 @@ namespace Slutprojekt
     public class Resources
     {
         private List<Citizen> citizens = new List<Citizen>();//kunna accessa denna från program
+        private Dictionary<string, int> Stats = new Dictionary<string, int>(); //Dictionary som används för de stats som uppdateras under spelets gång
+        public Queue<string> nameQueue = new Queue<string>(); //queue av namn, så citizens inte ska kunna heta samma saker
+          
         public List<Citizen> Citizens
         {
             get { return citizens; }
             set { citizens = value; }
         }
         public List<Law> laws = new List<Law>();
-        private int money;
-        private int food;
-        private int weapons;
         
         /*private int buildingMaterial;
         public int BuildingMaterial{
@@ -26,9 +26,6 @@ namespace Slutprojekt
         private string reason;
         public Resources()
         {
-            money = 200;
-            food = 50;
-            weapons = 0;
             //buildingMaterial = 0;
             for (int i = 0; i < 5; i++)
             {
@@ -40,11 +37,20 @@ namespace Slutprojekt
                 totalHappiness = totalHappiness + citizens[i].Happiness;
             }
             averageHappiness = totalHappiness / citizens.Count;
+            Stats.Add("Money",200);
+            Stats.Add("Food",50);
+            Stats.Add("Weapons",0);
+            nameQueue.Enqueue("Steve");
+            nameQueue.Enqueue("Martin");
+            nameQueue.Enqueue("John");
+            nameQueue.Enqueue("Michael");
+            nameQueue.Enqueue("Kevin");
+            nameQueue.Enqueue("Earl");
         }
         public void Build()
         {
             //buildingMaterial-=20;
-            money -= 200;
+            Stats["Money"] -= 20;
             for (int i = 0; i < 10; i++)
             {
                 citizens.Add(new Citizen());
@@ -71,7 +77,7 @@ namespace Slutprojekt
             if (averageHappiness > 0)
             {
                 Console.WriteLine("Your town is so happy, they invited their friends!");
-                citizens.Add(new Citizen());
+                citizens.Add(new LegendaryCitizen(nameQueue));
             }
             else if (averageHappiness < 0)
             {
@@ -131,10 +137,10 @@ namespace Slutprojekt
         }
         public void FeedingTime()
         {
-            food = food - 2 * citizens.Count;
-            if (food < 0)
+            Stats["Food"] = Stats["Food"] - 2 * citizens.Count;
+            if (Stats["Food"] < 0)
             {
-                food = 0;
+                Stats["Food"] = 0;
                 Console.WriteLine("You couldn't give food to all your citizens. They are starving, and are unhappy...");
                 Random generator = new Random();
                 for (int j = 0; j < citizens.Count; j++)
@@ -143,7 +149,7 @@ namespace Slutprojekt
                 }
 
             }
-            else if (food > 0)
+            else if (Stats["Food"] > 0)
             {
                 Console.WriteLine("You gave your citizens " + 2 * citizens.Count + " food");
             }
@@ -233,15 +239,15 @@ namespace Slutprojekt
                         int amountFood;
                         bool lyckad = int.TryParse(amountFoodString, out amountFood);
                         int cost = amountFood * 3;
-                        if (cost > money)
+                        if (cost > Stats["Money"])
                         {
                             lyckad = false;
                         }
 
                         if (lyckad)
                         {
-                            money = money - cost;
-                            food = food + amountFood;
+                            Stats["Money"] = Stats["Money"] - cost;
+                            Stats["Food"] = Stats["Food"] + amountFood;
                             buyFoodLoop++;
                         }
                         else
@@ -264,15 +270,15 @@ namespace Slutprojekt
                         int amountWeapons;
                         bool lyckad = int.TryParse(amountWeaponsString, out amountWeapons);
                         int cost = amountWeapons * 40;
-                        if (cost > money)
+                        if (cost > Stats["Money"])
                         {
                             lyckad = false;
                         }
 
                         if (lyckad)
                         {
-                            money = money - cost;
-                            weapons = weapons + amountWeapons;
+                            Stats["Money"] = Stats["Money"] - cost;
+                            Stats["Weapons"] = Stats["Weapons"]  + amountWeapons;
                             buyWeaponsLoop++;
                         }
                         else
@@ -300,7 +306,7 @@ namespace Slutprojekt
         }
         public void PrintStats()
         {
-            Console.WriteLine("Citizens: " + citizens.Count + " Money: " + money + " Food: " + food + " Happiness: " + averageHappiness);
+            Console.WriteLine("Citizens: " + citizens.Count + " Money: " + Stats["Money"] + " Food: " + Stats["Food"] + " Happiness: " + averageHappiness);
             if (citizens.Count == 0)
             {
                 reason = "zerociti";
@@ -309,8 +315,6 @@ namespace Slutprojekt
         }
         public void Revolt()
         {
-
-
             reason = "revolt";
             GameOver(reason);
         }

@@ -9,7 +9,6 @@ namespace Slutprojekt
         {
             //Förbättra: Arv i flera led, 2 steg. Fler generiska klasser. 
             Resources newGame = new Resources();//creates a resource class, which creates a new game
-
             //Console.WriteLine(newGame.Citizens[1].AgeGroup);    
 
             //flytta konversationer till klasser, metoder i klasser

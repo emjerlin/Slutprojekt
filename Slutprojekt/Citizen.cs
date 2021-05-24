@@ -4,11 +4,12 @@ namespace Slutprojekt
 {
     public class Citizen
     {
-        private int happiness;
+        public int happiness;
         public int Happiness{
             get{return happiness;}
             set{happiness=value;}
         }
+        
 
         /*These bools describe if the citizen feels about these topics. True means they want more than medium, and false means they want less
         I chose to remove them because it would make my game too hard to make/take too much time
@@ -52,10 +53,10 @@ namespace Slutprojekt
             */
             
         }
-        public void MakeHappy(){
+        public virtual void MakeHappy(){
             happiness=happiness+10;
         }
-        public void MakeUnhappy(){
+        public virtual void MakeUnhappy(){
              happiness=happiness-10;
         }
     }
